@@ -19,18 +19,6 @@ assign data = (AEN == 3) ? data_out : 8'bz;
 assign address = (AEN == 3) ? addr : 16'bz;
 integer clkCount = 0;
 integer j = 0;
-always @( negedge clk)
-	begin
-	if(MEMWP===1) begin
-		 mem[address] <= data;
-		$display("[RAM]         clk: %0d, addr:%0d, value:%b",clkCount,address,data);
-	end
-	else if(MEMRP===1) begin 
-		data_out <= mem[addressOS];
-		$display("rammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm value %0d clk: %0d",mem[addressOS],clkCount );
-	end
-	addressOS<=address;
-	end
 
 always @ (posedge clk)
 begin 
